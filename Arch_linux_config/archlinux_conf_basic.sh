@@ -35,9 +35,9 @@ pacman -S lxde --noconfirm
 systemctl enable /lib/systemd/system/lxdm.service
 ####################
 
-# launch at the start-up the following : dhcpd, wpa_supplicant
-systemctl enable /lib/systemd/system/dhcpcd.service
+# launch at the start-up the following : wpa_supplicant, wifi auto manager
 systemctl enable /lib/systemd/system/wpa_supplicant.service
+systemctl enable netctl-auto@wlp2s0.service
 
 
 echo "end of the configuration ! reboot . . ."

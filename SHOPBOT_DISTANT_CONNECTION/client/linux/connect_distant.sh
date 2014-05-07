@@ -35,7 +35,7 @@ distant_public_port=$2
 
 # set the ssh tunnel for accessing the web server on the raspberry pi from everywhere
 
-ssh -N -L :$local_port:localhost:80 $distant_public_ip -p $distant_public_port
+ssh -f -N -L :$local_port:localhost:80 handibot-dev@$distant_public_ip -p $distant_public_port
 if [ $? -eq 0 ]
 then
 echo $local_port 

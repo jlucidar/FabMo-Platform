@@ -24,7 +24,7 @@ int main(){
 	CHECK(sock=socket(AF_INET,SOCK_DGRAM,0),("problem with socket creation"));
 	server.sin_family = AF_INET;
 	server.sin_port = 7777;
-	//server.sin_addr.s_addr= inet_addr(INADDR_ANY); // on recoit sur toutes les interfaces
+	server.sin_addr.s_addr= htonl(INADDR_ANY); // receive on every interfaces
 	
 	CHECK(bind(sock,(struct sockaddr*)&server,sizeof(server)),"bind problem");
 	while(1)
@@ -37,7 +37,7 @@ int main(){
 		{
 			CHECK(sendto(sock,OK,strlen(OK)+1,0,(struct sockaddr*)&client,cltlen),"failed sending request");
 			//send OK
-			// here it works ! ( UDP create a bidirectionnal chanel)
+			// here it works ! ( UDP create a bidirectional channel)
 		}
 		else
 		{

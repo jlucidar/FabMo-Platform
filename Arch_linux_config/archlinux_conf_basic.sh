@@ -29,6 +29,7 @@ pacman -S gcc --noconfirm
 
 # install the dhcp server
 pacman -S dhcp --noconfirm
+pacman -S udhcpd --noconfirm
 
 # update the system
 pacman -Syu --noconfirm
@@ -62,8 +63,10 @@ echo -e "subnet 192.168.10.0 netmask 255.255.255.248 {\n  range 192.168.10.2 192
 echo -e "[Unit]\nDescription=IPv4 DHCP server on usb0\nWants=network.target\nAfter=network.target\n\n[Service]\nType=forking\nPIDFile=/run/dhcpd4.pid\nExecStart=/usr/bin/dhcpd -4 -q -pf /run/dhcpd4.pid usb0\nKillSignal=SIGINT\n\n[Install]\nWantedBy=multi-user.target\n" > /etc/systemd/system/dhcpd_usb0.service
 systemctl enable dhcpd_usb0
 
-
-
+############# TO-DO #################
+# ADD THE dhcp server configuration #
+#for the Wifi Direct connection	    #
+#####################################
 
 echo "end of the configuration ! reboot . . ."
 sleep 2

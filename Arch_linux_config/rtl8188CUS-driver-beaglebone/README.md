@@ -1,19 +1,11 @@
 driver for the rtl8188CUS chip on the beaglebone running Arch-Linux
 ===========
-** NOT RECOGNIZE BY NL80211 YET **
-** 	     BE CARREFUL        **
 
 Install the drivers for the rtl8188CUS ( 8192cu ) on the beaglebone running ArchLinux without cross compiler, with p2p support and concurrence mode.
 
 the concurrence mode allow you to use two wlan interface on a single chip ( wlan0 & wlan1 ).
 
 It's usefull for making a wifi Direct connection without losing our normal connection, for exemple.
-
-
-
-Troubles :
-It seems to have a problem with nl80211 driver, so we cannot use the p2p functions yet, we cannot launch wpa_supplicant with nl80211 and the iw commands fail ( but not the iwconfig and iwpriv commands).
-
 
 
 Instructions :

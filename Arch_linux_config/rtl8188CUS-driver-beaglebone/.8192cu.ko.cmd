@@ -1,0 +1,1 @@
+cmd_/root/rtl8188C_8192C_usb_linux_v4.0.2_9000.20130911/8192cu.ko := ld -EL -r  -T /usr/src/linux-3.8.13-22-ARCH/scripts/module-common.lds --build-id  -o /root/rtl8188C_8192C_usb_linux_v4.0.2_9000.20130911/8192cu.ko /root/rtl8188C_8192C_usb_linux_v4.0.2_9000.20130911/8192cu.o /root/rtl8188C_8192C_usb_linux_v4.0.2_9000.20130911/8192cu.mod.o

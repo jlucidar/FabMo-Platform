@@ -1,0 +1,21 @@
+#select_a_tool_div
+{
+	position: fixed;
+	left: 50%;
+	top: 50%;
+	margin-top: -20%;
+	margin-left: -25%;
+	background-color: #FFFFFF;
+	z-index: 97;
+}
+
+#select_a_tool_background
+{
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	background: rgba(0, 0, 0, 0.55);
+	z-index: 96;
+	top:0;
+	left:0;
+}

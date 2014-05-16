@@ -52,7 +52,7 @@ wait # wait for every processus to end
 cat "$execPath/ip.dat" | sort | uniq >"$execPath/ip2.dat"; cp "$execPath/ip2.dat" "$execPath/ip.dat"; rm "$execPath/ip2.dat";
 
 for line in $(cat $execPath/ip.dat);
-	do eval '"$execPath/are_you_a_sbt" "$line" 2> /dev/null ; if [ $? -eq 0 ]; then echo $line; fi'&
+	do eval '"$execPath/are_you_a_sbt" "$line" 2> /dev/null ; printf ":"; if [ $? -eq 0 ]; then echo $line; fi'&
 done
 wait
 rm "$execPath/ip.dat" 2> /dev/null

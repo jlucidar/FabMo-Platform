@@ -10,7 +10,8 @@
 #define MAXBUFF 1024
 #define OK "YES I M !"
 #define ERR "I DNT UNDRSTND !"
-#define MESS "R U A SBT ?"
+#define HOSTNAME "U NAME ?"
+#define REQ "R U A SBT ?"
 
 
 int main(){
@@ -21,6 +22,7 @@ int main(){
 	int sock;
 	char Buff[MAXBUFF];
 	char adr_cli[20];
+	char my_hostname[128];
 	CHECK(sock=socket(AF_INET,SOCK_DGRAM,0),("problem with socket creation"));
 	server.sin_family = AF_INET;
 	server.sin_port = 7777;
@@ -32,10 +34,19 @@ int main(){
 		cltlen = sizeof(client);
 		bzero(Buff,MAXBUFF);
 		CHECK(recvfrom(sock,Buff,MAXBUFF,0,(struct sockaddr *)&client,&cltlen),"reception trouble");
-		printf("scan in progress...\n");
-		if(strcmp(Buff,MESS)==0)
+
+		if(strcmp(Buff,REQ)==0)
 		{
+			printf("scan in progress...\n");
 			CHECK(sendto(sock,OK,strlen(OK)+1,0,(struct sockaddr*)&client,cltlen),"failed sending request");
+			//send OK
+			// here it works ! ( UDP create a bidirectional channel)
+		}
+		else if(strcmp(Buff,HOSTNAME)==0)
+		{
+			printf("hostname request...\n");
+			gethostname(my_hostname, sizeof my_hostname);
+			CHECK(sendto(sock,my_hostname,strlen(my_hostname)+1,0,(struct sockaddr*)&client,cltlen),"failed sending request");
 			//send OK
 			// here it works ! ( UDP create a bidirectional channel)
 		}

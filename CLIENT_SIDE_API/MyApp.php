@@ -25,14 +25,18 @@ if (isset($_POST["device_choice"]) && !empty($_POST["device_choice"]))
 </div>
     <br>
     <br>
+
 <div id="send_data">
-    <h2> Send him some data ! </h2>
+    <h2> Debug Tool </h2>
     <form action="http://<?php echo $tool_ip?>" method="post" id="send_data_form">
-	<textarea id="data_textarea" name="data"></textarea><br>
+	Data to send : <textarea id="data_textarea"></textarea><br>
+	Path of the service (let blank if / ) : <input type="text" id="service_path">
 	<button id="send_data_button" type="button">Send</button>
     </form>
-    <div id="send_data_reply"></div>
+    <div id="receive_data_field">Data received : <textarea id="received_data_textarea" disabled=true></textarea><br></div>
 </div>
+
+
 <?php } ?>
 
 <script>
@@ -49,18 +53,30 @@ $(function() {
     });
 
     <?php if (isset($tool_ip)) { ?>
-    var device_choice = '<?php echo $tool_ip ?>' ;
-    $( "#send_data_button" ).click(function() {
-    	$.post( $('#send_data_form').attr("action"), { data:  $('#data_textarea').find( "#data" ).val() } ).done(function( my_data ) {
-    		$( "#send_data_reply" ).empty().append( "Reply :<br>" + my_data);
-	});
+    $( "#send_data_button" ).click(function(event) {
+        var url = $('#send_data_form').attr('action') + '/' + $('#service_path').val() + '?callback=?';
+	event.preventDefault();
+	$.ajax({
+            url: url,
+	    type: "POST",
+	    jsonp : false,
+	    dataType: 'json',
+	    data: JSON.parse($('#data_textarea').val()),
+	    //contentType: "json",
+	    cache: true,
+	    success: function(my_data){
+	    	//var my_data_json =  JSON.parse(my_data);
+	   	var my_data_string =  JSON.stringify(my_data, null, "\t");
+	    	$( "#received_data_textarea" ).empty().append(my_data_string );
+	    },
+	    error: function(jqxhr){
+	    	console.log(jqxhr);
+	    }
+        });
     });
-
     <?php } ?>
-
-
-
 });
+  
 </script>
 
 <?php include 'template/ShopBot_footer.php' ?>

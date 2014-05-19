@@ -12,13 +12,14 @@
 execPath=$(dirname $0)
 
 
-list_itf=$(ifconfig | awk -F "  " '{ print $1 }' | tr -s "\n") #get the list of the interfaces
+list_itf=$(/sbin/ifconfig | awk -F "  " '{ print $1 }' | sed "/:avahi/d" | sed "/lo/d" | tr -s "\n") #get the list of interfaces
+#avoid problem with avahi interface problem
 
 for itf in $list_itf;
 do
 	
-	ip_addr=$(ifconfig $itf | grep "inet adr" | grep -oE 'adr:((1?[0-9][0-9]?|2[0-4][0-9]|25[0-5])\.){3}(1?[0-9][0-9]?|2[0-4][0-9]|25[0-5])' |  awk -F ":" '{ print $2 }')
-	ip_mask=$(ifconfig $itf | grep "inet" | grep -oE '255.((1?[0-9][0-9]?|2[0-4][0-9]|25[0-5])\.){2}(1?[0-9][0-9]?|2[0-4][0-9]|25[0-5])')	
+	ip_addr=$(/sbin/ifconfig $itf | grep "inet addr" | grep -oE 'addr:((1?[0-9][0-9]?|2[0-4][0-9]|25[0-5])\.){3}(1?[0-9][0-9]?|2[0-4][0-9]|25[0-5])' |  awk -F ":" '{ print $2 }')
+	ip_mask=$(/sbin/ifconfig $itf | grep "inet" | grep -oE '255.((1?[0-9][0-9]?|2[0-4][0-9]|25[0-5])\.){2}(1?[0-9][0-9]?|2[0-4][0-9]|25[0-5])')
 	is_C=$(echo $ip_mask | grep 255.255.255. | wc -l)
 	if [ $is_C -eq 1 ] #mask class C
 	then
@@ -52,7 +53,7 @@ wait # wait for every processus to end
 cat "$execPath/ip.dat" | sort | uniq >"$execPath/ip2.dat"; cp "$execPath/ip2.dat" "$execPath/ip.dat"; rm "$execPath/ip2.dat";
 
 for line in $(cat $execPath/ip.dat);
-	do eval '"$execPath/are_you_a_sbt" "$line" 2> /dev/null ; printf ":"; if [ $? -eq 0 ]; then echo $line; fi'&
+	do eval '"$execPath/are_you_a_sbt" "$line" 2> /dev/null ; if [ $? -eq 0 ]; then echo :$line; fi'&
 done
 wait
 rm "$execPath/ip.dat" 2> /dev/null

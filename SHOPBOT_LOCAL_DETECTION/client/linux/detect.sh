@@ -52,8 +52,15 @@ wait # wait for every processus to end
 
 cat "$execPath/ip.dat" | sort | uniq >"$execPath/ip2.dat"; cp "$execPath/ip2.dat" "$execPath/ip.dat"; rm "$execPath/ip2.dat";
 
+printf "[ "
+printf 1 > $execPath/first.dat;
+
 for line in $(cat $execPath/ip.dat);
-	do eval '"$execPath/are_you_a_sbt" "$line" 2> /dev/null ; if [ $? -eq 0 ]; then echo :$line; fi'&
+do 
+	eval 'result=$("$execPath/are_you_a_sbt" "$line" 2> /dev/null) ; if [ $? -eq 0 ]; then if [ $(cat $execPath/first.dat) = 1 ]; then printf 0 > $execPath/first.dat; else printf " , " ; fi ; printf "$result" ; printf ", \"active_ip\" : \"$line\" }" ; fi;'&
+
 done
 wait
+printf " ]\n"
 rm "$execPath/ip.dat" 2> /dev/null
+rm "$execPath/first.dat" 2> /dev/null

@@ -39,7 +39,17 @@ int main(int argc, char* argv[]){
 	CHECK(sendto(sock,HOSTNAME,strlen(HOSTNAME)+1,0,(struct sockaddr*)&server,siserv),"failed sending request");
 
 	CHECK(recvfrom(sock,Buff,MAXBUFF,0,(struct sockaddr*)&server,&siserv),"no hostname");
-	printf("%s",Buff);
-	close(sock);
-	exit(0);
+	
+	if (strstr(Buff, "{\"hostname\" :") != NULL) {
+   		// contains
+		printf("{ \"device\" : %s",Buff);
+		close(sock);
+		exit(0);
+	}
+	else {
+		printf("{ \"device\" : \"%s\"",Buff);
+		close(sock);
+		exit(0);
+	}
+
 }

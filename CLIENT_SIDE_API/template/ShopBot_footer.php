@@ -1,4 +1,5 @@
-			<p>
+			<br>
+			<p style="clear: both;">
 			    This service acts as a portal to your Shopbot's control computer,
 	                    allowing you to load part files and run your Shopbot from anywhere.
 		        </p>

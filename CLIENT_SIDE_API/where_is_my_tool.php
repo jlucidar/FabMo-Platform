@@ -23,8 +23,8 @@
 <div id="manual_settings_dialog" style="display: none">
     <h1>manual settings</h1>
     <form action="<?php echo $_SERVER['HTTP_REFERER'];?>" method="post" id="manual_form">
-        <div id="manual_ip_field"></div>
-	<button type="submit" id="connect_button">Connect</button>
+        Ip Adress: <input type="text" id="manual_ip_address">
+	<button type="button" id="manual_connect_button">Connect</button>
     </form>
 </div>
 <script>
@@ -52,6 +52,7 @@ $(function() {
 			$('#manual_settings_button').removeAttr("disabled");
 			$('input[name=device_choice]').remove();
 			$('#ip_form').append('<input type="hidden" name="device_choice">');
+
 			$('#list_devices li').click(function(){
 				 $( "input[name=device_choice]" ).val( $(this).attr('value') );
 				 $('#list_devices li').removeAttr('selected');
@@ -62,19 +63,24 @@ $(function() {
 				$('#manual_settings_dialog_background').show("fade");
 				$('#manual_settings_dialog').show("fade");
 				$('input[name=device_choice]').remove();
-				$('#manual_ip_field').append('Ip Adress: <input type="text" name="device_choice">');
+				$('#manual_form').append('<input type="hidden" name="device_choice">');
    			});
 			$("#refresh_button").click(function() {
 				$( "#menu" ).tabs("load",$("#menu").tabs( "option", "active"));
    			});
 			$('#manual_settings_dialog_background').click(function() {
-				$('#manual_ip_field').empty();
+				$( "input[name=device_choice]" ).remove();
 				$('#ip_form').append('<input type="hidden" name="device_choice">');
 				$('#manual_settings_dialog_background').hide("fade");
 				$('#manual_settings_dialog').hide("fade");
+			});	
+			$("#manual_connect_button").click(function() {
+				var json_obj = {"hostname":"manual-connection","network":[{"interface":"man","ip_address": $("#manual_ip_address").val()}]};
+				$( "input[name=device_choice]" ).val(JSON.stringify(json_obj));
+				$('#manual_form').submit();
 				
+   			});	
 
-			});
       		}
 	});
 

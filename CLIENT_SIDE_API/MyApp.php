@@ -2,7 +2,8 @@
 <?php
 if (isset($_POST["device_choice"]) && !empty($_POST["device_choice"]))
 {
-	$tool_ip = $_POST["device_choice"];
+	$tool_json = $_POST["device_choice"];
+	$tool = json_decode($tool_json);
 }
 ?>
 
@@ -16,24 +17,72 @@ if (isset($_POST["device_choice"]) && !empty($_POST["device_choice"]))
 <div id="select_a_tool_div" style="display: none"></div>
 <div id="select_a_tool_background" style="display: none"></div>
 
-<?php if (isset($tool_ip)) { ?>
+<?php if (isset($tool)) {?>
 <br>
 <br>
+
 <div id='tool_info'>
     <h2>Connected to the tool !</h2>
-    ip : <?php echo $tool_ip ?>
-</div>
-    <br>
-    <br>
+    hostname : <?php echo $tool->hostname ?><br>
+    networks : <?php echo "<ul id=\"list_networks\">";
+	foreach (( $tool->network) as $net)
+	{
+		echo "<li>Ip Address : ".$net->ip_address."<br>  interface : ".$net->{'interface'}."</li>";
+	}
+	echo "</ul>";
+		?>
 
+</div>
+<br>
 <div id="send_data">
     <h2> Debug Tool </h2>
-    <form action="http://<?php echo $tool_ip?>" method="post" id="send_data_form">
-	Data to send : <textarea id="data_textarea"></textarea><br>
-	Path of the service (let blank if / ) : <input type="text" id="service_path">
+
+<?php
+// automatic selection of the best way to talk to the tool
+// base on this priority : usb > ethernet > wifi > wifi-direct
+	foreach (( $tool->network) as $net)
+	{
+		if($net->{'interface'} == "wlan1")
+		{
+			$selcted_ip = $net->ip_address;
+		}
+	}
+	foreach (( $tool->network) as $net)
+	{
+		if($net->{'interface'} == "wlan0")
+		{
+			$selcted_ip = $net->ip_address;
+		}
+	}
+	foreach (( $tool->network) as $net)
+	{
+		if($net->{'interface'} == "eth0")
+		{
+			$selcted_ip = $net->ip_address;
+		}
+	}
+	foreach (( $tool->network) as $net)
+	{
+		if($net->{'interface'} == "usb0")
+		{
+			$selcted_ip = $net->ip_address;
+		}
+	}
+?>
+
+
+    <form action="http://<?php echo $selcted_ip?>" method="post" id="send_data_form" style="float:left;width:45%;">
+	Path of the service (let blank if / ) : <br><input type="text" id="service_path"><br>
+	Data to send :<br> <textarea id="data_textarea" style="overflow: auto;
+resize: none;
+height: 120px;
+width: 275px;">{}</textarea><br>
 	<button id="send_data_button" type="button">Send</button>
     </form>
-    <div id="receive_data_field">Data received : <textarea id="received_data_textarea" disabled=true></textarea><br></div>
+    <div id="receive_data_field">Data received : <br><textarea id="received_data_textarea" disabled=true style="overflow: auto;
+resize: none;
+height: 175px;
+width: 380px;"></textarea><br></div>
 </div>
 
 
@@ -52,7 +101,7 @@ $(function() {
 	$("#select_a_tool_div").hide('fade');
     });
 
-    <?php if (isset($tool_ip)) { ?>
+    <?php if (isset($tool)) { ?>
     $( "#send_data_button" ).click(function(event) {
         var url = $('#send_data_form').attr('action') + '/' + $('#service_path').val() + '?callback=?';
 	event.preventDefault();
@@ -78,5 +127,4 @@ $(function() {
 });
   
 </script>
-
 <?php include 'template/ShopBot_footer.php' ?>

@@ -28,7 +28,8 @@
     </form>
 </div>
 <script>
-$(function() {
+$(
+function() {
 	$( "#menu" ).tabs({
 		beforeLoad: function( event, ui ) {
 		        ui.panel.empty();
@@ -48,6 +49,7 @@ $(function() {
 		load: function( event, ui ) {
 			ui.panel.css('background','');
 			$('#list_devices li:even').addClass("device_odd") ;
+			set_available_networks();
 			$('#refresh_button').removeAttr("disabled");
 			$('#manual_settings_button').removeAttr("disabled");
 			$('input[name=device_choice]').remove();
@@ -83,6 +85,43 @@ $(function() {
 
       		}
 	});
+
+function set_available_networks(){
+	$('#list_devices li').wrapInner('<span style="display: inline-block;width: 49%;">');
+	$('#list_devices li').append('<span style="display: inline-block;text-align: right;width: 49%;">');
+	$('#list_devices li').each(function() {
+		li_elt = $(this);
+		var networks = $.parseJSON(($(this).attr("value"))).network;
+		var itrs = [];
+		$.each(networks, function(){
+			itrs.push(this.interface);
+		});
+		if ( jQuery.inArray("usb0",itrs) != -1 )
+			li_elt.children().next().append('<img src="./images/usb_enabled.png" style="width: 50px;">');
+
+		if ( jQuery.inArray("eth0",itrs) != -1)
+			li_elt.children().next().append('<img src="./images/ethernet_enabled.png" style="width: 50px;">');
+
+
+		if ( jQuery.inArray("wlan0",itrs) != -1)
+			li_elt.children().next().append('<img src="./images/wifi_enabled.png" style="width: 50px;">');
+
+		if ( jQuery.inArray("wlan1",itrs) != -1)
+			li_elt.children().next().append('<img src="./images/wifi_direct_enabled.png" style="width: 50px;">');
+
+	});
+/*
+<img src="./images/ethernet_enabled.png" style="
+    width: 50px;
+">
+<img src="./images/wifi_enabled.png" style="
+    width: 50px;
+">
+<img src="./images/wifi_direct_enabled.png" style="
+    width: 50px;
+">
+*/
+};
 
 
 });

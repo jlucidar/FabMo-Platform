@@ -5,12 +5,12 @@ ShopBot-API
 This github repository contains sources and tools about the new Shopbot's API and the new system design.
 
 ## Architecture of the new system
-  ShopBot wants to bring open-source software and platform to his devices.  
-  Actually the process for controlling CNC tools consist on streaming to the tool each steps of the motors from a computer.  
+  ShopBot wants to bring open-source software and platform to its devices.  
+  The process for controlling CNC tools consist of streaming to the tool each steps of the motors from a computer.  
       
   **Time is coming to change it.**  
     
-  The new system consist on embedded a Single-Board Microcontroller and a Single-Board Computer on the tool, giving more flexibility from the client side.  
+  The new system consists of an embedded Single-Board Microcontroller and a Single-Board Computer on the tool, giving more flexibility from the client side.  
   
   A first draft of the new architecture can be found [here](schema/Global system architecture.pdf).
   

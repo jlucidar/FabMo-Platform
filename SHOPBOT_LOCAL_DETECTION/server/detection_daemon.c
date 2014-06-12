@@ -28,7 +28,7 @@ int main(){
 	char path[1035],result[1035] ;
 
 	CHECK(sock=socket(AF_INET,SOCK_DGRAM,0),("problem with socket creation"));
-
+	printf("port : %d\n",ntohs(7777));	
 	server.sin_family = AF_INET;
 	server.sin_port = 7777;
 	server.sin_addr.s_addr= htonl(INADDR_ANY); // receive on every interfaces

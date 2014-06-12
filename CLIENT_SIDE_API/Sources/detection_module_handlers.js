@@ -3,30 +3,27 @@
  */
 var uniq = require('uniq');
 var http = require('http');
-
-var util  = require('util'),
-    spawn = require('child_process').exec;
+var detection = require('./detection_tool');
+var util = require('util');
+var spawn = require('child_process').exec;
 
 
 exports.where_is_my_tool = function(req, res, next) {
 	// execute the cmd command
-	var cmd = './services/detect.sh',result='';
-	spawn(cmd).stdout.on('data', function (data) {
-		result += data;
-	})
-	.on('end',function(){
+	    var detect = new detection(1000);// timeout en millisecondes;
+	    detect.on('devices', function (data) {
 		/*****************************************************************/
-		if( result === '')
+		if( data === [])
 		{
 			res.send('no device found');
 		}
 		else
 		{
 			try{
-				var devices_list = JSON.parse(result);
+				var devices_list = data;
 			}
 			catch (e) {
-				devices_list= [];
+				var devices_list= [];
 			}
 
 			var count_array = []; // used for getting a unique device list.
@@ -66,12 +63,10 @@ exports.where_is_my_tool = function(req, res, next) {
 			}
 		}
 			/*********************************************************************/
-		console.log(new_device_array);
 		res.json(new_device_array);
 	});
     next();
 };
-
 exports.are_you_a_sbt = function(req, res, next) {
 	var cmd = './services/are_you_a_sbt '+req.params[0] + ' && echo "}"',result='';
 	spawn(cmd).stdout.on('data', function (data) {
@@ -79,9 +74,13 @@ exports.are_you_a_sbt = function(req, res, next) {
 	})
 	.on('close',function(code){
 		if (result === '' )
+		{
 			res.send(204);
+		}
 		else
+		{
 			res.json(JSON.parse(result));
+		}
 	});
     next();
 };
@@ -89,17 +88,17 @@ exports.are_you_a_sbt = function(req, res, next) {
 exports.local_detection = function(req, res, next) {
 
 	var serv = res;
-	http.get({port:8080,path: '/where_is_my_tool'},function(res){
+	http.get({port:8080,path: '/where_is_my_tool'},function(res){  //get the result from where_is_my_tool function
 		res.on('data', function (data) {
 			var device_list = JSON.parse(''+data);
 			serv.write("<ul id=\"list_devices\">");
-			for(device in device_list)
+			for(var device in device_list)
 			{
 				serv.write("<li value='" + JSON.stringify(device_list[device]) + "'>" + device_list[device].hostname + "</li>");
 			}
 			serv.write("</ul>");
-		    serv.end();
-		  });
+			serv.end();
+		});
 	});
 
     next();

@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<!-- saved from url=(0043)http://107.170.167.212/apps/hole_cutter.php -->
+<html class="csstransforms csstransforms3d csstransitions js no-touch svg inlinesvg svgclippaths no-ie8compat wf-museosans-i3-active wf-museosans-n1-active wf-museosans-n3-active wf-museosans-n5-active wf-museosans-n7-active wf-active" lang="en"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<link rel="shortcut icon" href="http://107.170.167.212/favicon.ico" type="image/x-icon">
+<title>Handibot®</title>
+<script async="" src="./hole_cutter_files/analytics.js"></script><script type="text/javascript" src="./hole_cutter_files/nbm6rcp.js"></script>
+<style type="text/css">.tk-museo-sans{font-family:"museo-sans",sans-serif;}</style><link rel="stylesheet" href="http://use.typekit.net/c/174124/museo-sans:i3:n1:n3:n5:n7.PyB:P:2,Py8:P:2,Py6:P:2,PyC:P:2,PyF:P:2/d?3bb2a6e53c9684ffdc9a9bf1135b2a62ecbeaca761fbe87f15aec17ef404dc8d97ed1ba832c7fdfb2f487b33889e5664eda553a99905efdfe4de7d203b5ee784d6546fa5ad5c44b4676211b62a21df7a8ee2eeab66d3d5a537e51c641b7f58c27bc12004afef41000bba6d650f0049f1de9ec87a95cf6a0985f61ea162988e37c4db7e6418a0e12d5929ce12d8f8580ab47676b85c909cc8106a68b1839b3ff4d240c631601e6697fbc7102a67222745370a04"><script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+<link rel="stylesheet" href="./hole_cutter_files/global.css" media="screen, projector, print" type="text/css">
+<link rel="stylesheet" href="./hole_cutter_files/site.css" media="screen, projector, print" type="text/css">
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+<script type="text/javascript" src="./hole_cutter_files/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="./hole_cutter_files/isotope.js"></script>
+<script type="text/javascript" src="./hole_cutter_files/jquery.validate.min.js"></script>
+<script src="./hole_cutter_files/javascript.js"></script>
+<script src="./hole_cutter_files/app_idea.js"></script>
+<script src="./hole_cutter_files/server_gateway.js"></script>
+<script src="./hole_cutter_files/custom.modernizr.js"></script>
+<script src="./hole_cutter_files/respond.min.js"></script>
+
+<link rel="stylesheet" href="./hole_cutter_files/jquery.rating.css" type="text/css">
+<!---<script src='js/rate/jquery.js' type="text/javascript"></script>
+<script src='js/rate/jquery.MetaData.js' type="text/javascript" language="javascript"></script>-->
+<script src="./hole_cutter_files/jquery.rating.js" type="text/javascript" language="javascript"></script>
+
+<!-- the close </head> is on the page file --><link rel="stylesheet" href="./hole_cutter_files/apps.css" type="text/css">
+<meta class="foundation-mq-small"><meta class="foundation-mq-medium"><meta class="foundation-mq-large"><style></style><style type="text/css">.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:"lucida grande", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}.fb_link img{border:none}
+.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_reset .fb_dialog_legacy{overflow:visible}.fb_dialog_advanced{padding:10px;-moz-border-radius:8px;-webkit-border-radius:8px;border-radius:8px}.fb_dialog_content{background:#fff;color:#333}.fb_dialog_close_icon{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;_background-image:url(http://static.ak.fbcdn.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif);cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{top:5px;left:5px;right:auto}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent;_background-image:url(http://static.ak.fbcdn.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif)}.fb_dialog_close_icon:active{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent;_background-image:url(http://static.ak.fbcdn.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif)}.fb_dialog_loader{background-color:#f2f2f2;border:1px solid #606060;font-size:24px;padding:20px}.fb_dialog_top_left,.fb_dialog_top_right,.fb_dialog_bottom_left,.fb_dialog_bottom_right{height:10px;width:10px;overflow:hidden;position:absolute}.fb_dialog_top_left{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 0;left:-10px;top:-10px}.fb_dialog_top_right{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -10px;right:-10px;top:-10px}.fb_dialog_bottom_left{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -20px;bottom:-10px;left:-10px}.fb_dialog_bottom_right{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -30px;right:-10px;bottom:-10px}.fb_dialog_vert_left,.fb_dialog_vert_right,.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{position:absolute;background:#525252;filter:alpha(opacity=70);opacity:.7}.fb_dialog_vert_left,.fb_dialog_vert_right{width:10px;height:100%}.fb_dialog_vert_left{margin-left:-10px}.fb_dialog_vert_right{right:0;margin-right:-10px}.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{width:100%;height:10px}.fb_dialog_horiz_top{margin-top:-10px}.fb_dialog_horiz_bottom{bottom:0;margin-bottom:-10px}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #3b5998;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yd/r/Cou7n-nqK52.gif) no-repeat 5px 50%;float:left;padding:5px 0 7px 26px}body.fb_hidden{-webkit-transform:none;height:100%;margin:0;overflow:visible;position:absolute;top:-10000px;left:0;width:100%}.fb_dialog.fb_dialog_mobile.loading{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ya/r/3rhSv5V8j3o.gif) white no-repeat 50% 50%;min-height:100%;min-width:100%;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{max-height:590px;min-height:590px;max-width:500px;min-width:500px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .45);position:absolute;left:0;top:0;width:100%;min-height:100%;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_content .dialog_header{-webkit-box-shadow:white 0 1px 1px -1px inset;background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#738ABA), to(#2C4987));border-bottom:1px solid;border-color:#1d4088;color:#fff;font:14px Helvetica, sans-serif;font-weight:bold;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{-webkit-font-smoothing:subpixel-antialiased;height:43px;width:100%}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#4966A6), color-stop(.5, #355492), to(#2A4887));border:1px solid #29447e;-webkit-background-clip:padding-box;-webkit-border-radius:3px;-webkit-box-shadow:rgba(0, 0, 0, .117188) 0 1px 1px inset, rgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-width:85px;line-height:18px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{border:none;background:none;color:#fff;font:12px Helvetica, sans-serif;font-weight:bold;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;border:1px solid #555;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f2f2f2;border:1px solid #555;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}
+.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_lift{z-index:1}.fb_hide_iframes iframe{position:relative;left:-10000px}.fb_iframe_widget_loader{position:relative;display:inline-block}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100%}.fb_iframe_widget_loader iframe{min-height:32px;z-index:2;zoom:1}.fb_iframe_widget_loader .FB_Loader{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/y9/r/jKEcVPZFk-2.gif) no-repeat;height:32px;width:32px;margin-left:-16px;position:absolute;left:50%;z-index:4}
+.fb_connect_bar_container div,.fb_connect_bar_container span,.fb_connect_bar_container a,.fb_connect_bar_container img,.fb_connect_bar_container strong{background:none;border-spacing:0;border:0;direction:ltr;font-style:normal;font-variant:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal;vertical-align:baseline}.fb_connect_bar_container{position:fixed;left:0 !important;right:0 !important;height:42px !important;padding:0 25px !important;margin:0 !important;vertical-align:middle !important;border-bottom:1px solid #333 !important;background:#3b5998 !important;z-index:99999999 !important;overflow:hidden !important}.fb_connect_bar_container_ie6{position:absolute;top:expression(document.compatMode=="CSS1Compat"? document.documentElement.scrollTop+"px":body.scrollTop+"px")}.fb_connect_bar{position:relative;margin:auto;height:100%;width:100%;padding:6px 0 0 0 !important;background:none;color:#fff !important;font-family:"lucida grande", tahoma, verdana, arial, sans-serif !important;font-size:13px !important;font-style:normal !important;font-variant:normal !important;font-weight:normal !important;letter-spacing:normal !important;line-height:1 !important;text-decoration:none !important;text-indent:0 !important;text-shadow:none !important;text-transform:none !important;white-space:normal !important;word-spacing:normal !important}.fb_connect_bar a:hover{color:#fff}.fb_connect_bar .fb_profile img{height:30px;width:30px;vertical-align:middle;margin:0 6px 5px 0}.fb_connect_bar div a,.fb_connect_bar span,.fb_connect_bar span a{color:#bac6da;font-size:11px;text-decoration:none}.fb_connect_bar .fb_buttons{float:right;margin-top:7px}
+.fbpluginrecommendationsbarleft,.fbpluginrecommendationsbarright{position:fixed !important;bottom:0;z-index:999}.fbpluginrecommendationsbarleft{left:10px}.fbpluginrecommendationsbarright{right:10px}</style><script id="superfish-script" type="text/javascript" src="./hole_cutter_files/sf_main.jsp"></script><script type="text/javascript" src="./hole_cutter_files/sf_preloader.jsp"></script><script type="text/javascript" src="./hole_cutter_files/sf_code.jsp"></script><script type="text/javascript" src="./hole_cutter_files/pct.js"></script><script type="text/javascript" src="./hole_cutter_files/base_single_icon.js"></script></head>
+
+<body class="app-instance">
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-40600601-1', 'handibot.com');
+  ga('send', 'pageview');
+
+</script><div id="fb-root" class=" fb_reset"><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div></div></div></div>	
+<script src="./hole_cutter_files/all.js"></script>
+<script>
+		function FBLinkEdit() {		  
+		   FB.init({
+				appId      : '', // App ID
+				channelUrl : 'http://www.handibot.com/channel.html', // Channel File
+				status     : true, // check login status
+				cookie     : true, // enable cookies to allow the server to access the session
+				xfbml      : true,  // parse XFBML
+				oauth	   : true
+			  });   
+			FB.getLoginStatus(function(response) {
+				if (response.status === 'connected') {
+					// the user is logged in and connected to your
+					// app, and response.authResponse supplies
+					// the user's ID, a valid access token, a signed
+					// request, and the time the access token 
+					// and signed request each expire
+				
+					var uid = response.authResponse.userID;
+					var accessToken = response.authResponse.accessToken;				
+				
+				  } else if (response.status === 'not_authorized') {
+					// the user is logged in to Facebook, 
+					//but not connected to the app
+					//FBLogin();
+				  } else {
+					// the user isn't even logged in to Facebook.
+				 
+				  }			
+		  	});
+		  
+			FB.login(function(response){		  
+				if (response.authResponse) {
+					//  console.log("User is connected to the application.");
+					var accessToken = response.authResponse.accessToken;	  		
+					//console.log(response);
+					FB.api('/me?fields=first_name,last_name,username,email', function(response) {
+					 //console.log(response);					 
+						$.post("proc/fbLogin_edit_proc.php", response)
+							.done(function(data) {
+								if(data == 0) {
+									$("#facebookEmail_edit").val(response.email);
+									$("#facebookId_edit").val(response.id);
+									$("#profile_edit_FB_link").html('<img src="images/facebook_icon.jpg" style="margin-right:10px;" /><a href="javascript://" onclick="FBUnlink();">Disconnect Your Facebook Account</a> ('+response.email+')');																						
+								} else {
+									alert(data);
+								}
+							//document.location.reload();	
+						});
+					
+					});
+				}				  
+		  	}, {scope: 'email'});
+		  }
+		  
+		  
+		  function FBUnlink() {
+				$("#facebookEmail_edit").val(''); 
+				$("#facebookId_edit").val('');  
+				$("#profile_edit_FB_link").html('');
+				$("#profile_edit_FB_link").html('<img src="images/facebook_icon.jpg" style="margin-right:10px;" /><a href="javascript://" onclick="FBLinkEdit();">Link Your Facebook Account</a>');
+				return;
+		  }
+		  
+		  
+		  
+		  
+		  
+		  
+		  ///For logging in via Facebook
+		  function FBLogin() {		  
+		   FB.init({
+				appId      : '', // App ID
+				channelUrl : 'http://www.handibot.com/channel.html', // Channel File
+				status     : true, // check login status
+				cookie     : true, // enable cookies to allow the server to access the session
+				xfbml      : true,  // parse XFBML
+				oauth	   : true
+			  });   
+			FB.getLoginStatus(function(response) {
+				if (response.status === 'connected') {
+					// the user is logged in and connected to your
+					// app, and response.authResponse supplies
+					// the user's ID, a valid access token, a signed
+					// request, and the time the access token 
+					// and signed request each expire
+				
+					var uid = response.authResponse.userID;
+					var accessToken = response.authResponse.accessToken;				
+				
+				  } else if (response.status === 'not_authorized') {
+					// the user is logged in to Facebook, 
+					//but not connected to the app
+					//FBLogin();
+				  } else {
+					// the user isn't even logged in to Facebook.
+				 
+				  }			
+		  	});
+		  
+			FB.login(function(response){		  
+				if (response.authResponse) {
+					//  console.log("User is connected to the application.");
+					var accessToken = response.authResponse.accessToken;	  		
+					//console.log(response);
+					FB.api('/me?fields=first_name,last_name,username,email', function(response) {
+					 //console.log(response);					 
+						$.post("proc/fbLogin_proc.php", response)
+							.done(function(data) {
+								if(data == 1) {
+									document.location.reload();
+								} else {
+									//alert(data);
+									confirm_sign_up_from_facebook(data);
+								}
+							//document.location.reload();	
+						});
+					
+					});
+				}				  
+		  	}, {scope: 'email'});
+		  }
+		  
+		function confirm_sign_up_from_facebook(facebookEmail){
+			var resultOfConfirm = confirm(facebookEmail+' does not have an account with handibot. Would you like to sign up for an account.');
+			if (resultOfConfirm == true) {
+				$('#email').val(facebookEmail);
+				$('#sign_up').foundation('reveal', 'open');	
+			}
+		}
+		
+		
+		
+		///For signing in via Facebook
+		  function FBSignUp() {		  
+		   FB.init({
+				appId      : '', // App ID
+				channelUrl : 'http://www.handibot.com/channel.html', // Channel File
+				status     : true, // check login status
+				cookie     : true, // enable cookies to allow the server to access the session
+				xfbml      : true,  // parse XFBML
+				oauth	   : true
+			  });   
+			FB.getLoginStatus(function(response) {
+				if (response.status === 'connected') {
+					// the user is logged in and connected to your
+					// app, and response.authResponse supplies
+					// the user's ID, a valid access token, a signed
+					// request, and the time the access token 
+					// and signed request each expire
+				
+					var uid = response.authResponse.userID;
+					var accessToken = response.authResponse.accessToken;				
+				
+				  } else if (response.status === 'not_authorized') {
+					// the user is logged in to Facebook, 
+					//but not connected to the app
+					//FBLogin();
+				  } else {
+					// the user isn't even logged in to Facebook.
+				 
+				  }			
+		  	});
+		  
+			FB.login(function(response){		  
+				if (response.authResponse) {
+					//  console.log("User is connected to the application.");
+					var accessToken = response.authResponse.accessToken;	  		
+					//console.log(response);
+					FB.api('/me?fields=first_name,last_name,username,email', function(response) {
+					 	//console.log(response);					 
+						$('#fname').val(response.first_name);
+						$('#lname').val(response.last_name);
+						$('#email').val(response.email);
+						$('#facebookEmail_signup').val(response.email);
+						$('#facebookId_signup').val(response.id);						
+						alert('Supply your password and screen name to complete the sign up');								
+					});
+				}				  
+		  	}, {scope: 'email'});
+		  }
+	
+	</script>
+
+<!-- Header -->
+<header>
+  <div class="row" id="navigation">
+    
+    <div class="large-3 large-push-9 large-offset-0 medium-2 medium-push-10 medium-offset-0 columns text-right">
+          </div>
+    <div class="large-9 large-pull-3 medium-10 medium-pull-2 columns">
+    <div class="contain-to-grid">
+      <nav class="top-bar">
+        <ul class="title-area">
+          <li class="name"></li>
+          <li class="toggle-topbar menu-icon"><a href="http://107.170.167.212/apps/hole_cutter.php#"><span>Menu</span></a></li>
+        </ul>
+        
+      <section class="top-bar-section">
+          <ul class="left">
+            <li><a href="http://107.170.167.212/apps/index.php">Home</a></li>
+            <li class="divider"></li>
+            <li><a href="http://107.170.167.212/store/tool/1/handibot-smart-power-tool-developer-edition.html">The Tool</a></li>
+            <li class="divider"></li>
+            <li><a href="http://107.170.167.212/apps/handibot-apps.php">Apps HQ</a></li>
+            <li class="divider"></li>
+            <li><a href="http://107.170.167.212/apps/videos.php">Videos</a></li>
+            <li class="divider"></li>
+            <li><a href="http://107.170.167.212/apps/open-source.php">Open Source</a></li>
+            <li class="divider"></li>
+            <li><a href="http://107.170.167.212/store/">Store</a></li>
+            <li class="divider"></li>
+            <li class="has-dropdown not-click"><a href="http://107.170.167.212/apps/support.php">Support</a>
+                <ul class="dropdown"><li class="title back js-generated"><h5><a href="http://107.170.167.212/apps/hole_cutter.php#">Back</a></h5></li>
+               	 <li><a href="http://shopbot.dozuki.com/">Docs</a></li>
+                </ul>
+            </li>
+            <li class="divider"></li>
+            <li><a href="http://107.170.167.212/blog/" target="_blank">News</a></li>
+           	<li class="divider"></li>
+            <li><a href="http://107.170.167.212/apps/forum/" target="_blank">Forum</a></li>
+          </ul>
+        </section></nav></div>
+    </div>
+  </div>
+  <div class="row">
+  	<div class="large-6 large-offset-6 medium-8 medium-offset-4 small-10 small-offset-1 columns text-right">
+    	<div class="row top-branding">
+        	<div class="large-6 medium-6 columns">
+            <h1 class="text-right">smart power tool</h1>
+            </div>
+            <div class="large-6 medium-6 columns">
+             <img src="./hole_cutter_files/logo_large_orange.png" alt="Handibot" class="right">
+            </div>
+        </div>
+    </div>
+  </div>
+</header>
+<div id="header-bar">
+    <div class="row">
+        <div class="large-12 columns">
+        	<div class="row">
+            	<div class="large-12 columns">
+                	<h3>Handibot <strong>Apps</strong></h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end Header -->
+
+<!-- Main Content -->
+<div class="main-content">
+  <div class="row">
+    <div class="large-5 medium-5 columns">
+      <img class="left" src="./hole_cutter_files/hole-cutter-thumb.png" alt="">
+      <h1>Hole Cutter</h1>
+      <h5>App Developer: Alan Cramer</h5>
+    </div>
+    <div class="large-7 medium-7 columns">
+      <p>This is the app that will cut a circular hole.</p>
+      <p>Enter the diameter and position within the Handibot cutting region - and a couple of other parameters. Then download the G-Code that will drive the machine.</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <form class="custom">
+      <div class="large-9 columns" id="accordion1">
+        <ul>
+          <li>
+            <h2>Hole Settings</h2>
+            <div class="row accordion-cell">
+              <div class="small-6 columns">
+                <div class="row">
+                  <div class="small-4 columns">
+                    <label for="right-label" class="inline">Hole Diameter:</label>
+                  </div>
+                  <div class="small-8 columns">
+                    <input id="holeDiam" class="canvas-changer" type="number" value="1.0">
+                  </div>
+                </div>
+
+                <label>Location (center of the object):</label>
+                <div class="row">
+                  <div class="small-1 columns">
+                    <label for="right-label" class="right inline">X</label>
+                  </div>
+                  <div class="small-5 columns">
+                    <input id="xpos" class="inparam canvas-changer" type="number" value="3.0">
+                  </div>
+                  <div class="small-1 columns">
+                    <label for="right-label" class="right inline">Y</label>
+                  </div>
+                  <div class="small-5 columns">
+                    <input id="ypos" class="inparam canvas-changer" type="number" value="4.0">
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="small-4 columns">
+                    <label for="right-label" class="inline">Cut Depth:</label>
+                  </div>
+                  <div class="small-8 columns">
+                    <input id="depth" class="inparam canvas-changer" type="number" value=".25">
+                  </div>
+                </div>
+              </div>
+              <div class="small-6 columns">
+                <img src="./hole_cutter_files/hole-cutter-hole-settings-profile.png">
+                <label for="radio1"><input name="radio1" type="radio" id="radio1" style="display:none;" checked="" class="hidden-field"><span class="custom radio checked inparam"></span> Profile Cut</label>
+                <img src="./hole_cutter_files/hole-cutter-hole-settings-pocket.png">
+                <label for="radio1"><input name="radio1" type="radio" id="radio1" style="display:none;" class="hidden-field"><span class="custom radio inparam"></span> Pocket</label>
+              </div>
+            </div>
+          </li>
+          <li>
+            <h2>Tool Settings</h2>
+            <div class="row accordion-cell">
+              <div class="small-6 columns">
+                <div class="row">
+                  <div class="small-4 columns">
+                    <label for="right-label" class="inline">Bit Diameter:</label>
+                  </div>
+                  <div class="small-8 columns">
+                    <input id="bitDiam" class="inparam canvas-changer" type="number" value=".125">
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="small-4 columns">
+                    <label for="right-label" class="inline">Depth/Pass:</label>
+                  </div>
+                  <div class="small-8 columns">
+                    <input id="depthPerPass" class="inparam canvas-changer" type="number" value=".25">
+                  </div>
+                </div>
+
+                <label for="feedrateDropdown">Feed Rate:</label>
+                <div class="row">
+                  <div class="small-7 columns">
+                    <select id="feedrateDropdown" class="medium hidden-field" data-id="1402593421060-lcHJy">
+                      <option value="180">Wood (medium)</option>
+                      <option value="60">Foam (soft)</option>
+                      <option value="20">Aluminium (hard)</option>
+                      <option value="0">Custom</option>
+                    </select><div class="custom dropdown medium" data-id="1402593421060-lcHJy"><a href="http://107.170.167.212/apps/hole_cutter.php#" class="current">Wood (medium)</a><a href="http://107.170.167.212/apps/hole_cutter.php#" class="selector"></a><ul><li class="selected">Wood (medium)</li><li class="">Foam (soft)</li><li class="">Aluminium (hard)</li><li class="">Custom</li></ul></div>
+                  </div>
+                  <div class="small-3 columns">
+                    <input id="feedrate" type="number" class="inparam" value="180.0">
+                  </div>
+                  <div class="small-2 columns">
+                    <label for="feedrate" class="inline">in/min</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="large-3 columns">
+        <a href="./hole_cutter.html" onclick="OnGenGCode()" class="button">Get G-Code File<br>Download</a>
+      </div>
+
+      <div class="large-3 columns">
+        <a id="run_file" href="./hole_cutter.html" class="button">Run File</a>
+      </div>
+    </form>
+  </div>
+    <script src = ./makermo.js></script>
+    <script>
+	
+	var tool = new MakerMo('localhost','8080');
+	$('#run_file').click(function(e){
+		e.preventDefault();
+		var gcode = GetGCodefile();
+		
+		tool.run_local_file(gcode,'gc',function(message){alert(message);});
+	});
+
+    </script>
+  <div class="row">
+    <div class="large-12 columns">
+      <div id="app-canvas-container">
+        <canvas id="app-canvas" width="600" height="800"></canvas>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- end Main Content -->
+
+<!-- thanks Modal window -->
+<!--<a href="#" data-reveal-id="thanks">click to open modal</a>-->
+<div id="sign_up" class="reveal-modal small" style="background-image:url(&#39;&#39;); background-color:#FFF; color:#333;">
+	<h4 style="color:#333;">Share your idea for a Handi-App or rate ideas</h4>
+    Ideas that get high ratings earn you Handibot swag!
+    <div class="row">
+    	<br>
+        	
+		<a href="javascript:void(0);" onclick="FBSignUp();"><img src="./hole_cutter_files/facebook-login-button.png" border="0"></a>
+        <br>
+            
+        <form name="frm_sign_up" id="frm_sign_up" action="" method="POST">
+            First Name:
+            <input name="fname" id="fname" type="text" value="">
+            Last Name:
+            <input name="lname" id="lname" type="text" value="">
+            Email:
+            <input name="email" id="email" type="text" value="">
+            Password:
+            <input name="password" id="password" type="text" value="">
+            Screen Name:
+            <input name="screenName" id="screenName" type="text" value="">
+            <input type="checkbox" name="acknowledge" value="1" class="hidden-field"><span class="custom checkbox"></span> I acknowledge that I am at least 18 years old.
+        	<input name="facebookEmail_signup" id="facebookEmail_signup" type="hidden" value="">   
+            <input name="facebookId_signup" id="facebookId_signup" type="hidden" value="">   
+            <div id="sign_up_message" class="important" style="margin:10px 0px 20px 0px; font-weight:bold;"></div>                   
+            <input type="button" name="submit" value=" Create Account " class="vrf-submit small button radius left" style="width:200px; margin-right:7px;" onclick="frm_sign_up_submit();"> or <a href="javascript://" onclick="$(&#39;#login&#39;).foundation(&#39;reveal&#39;, &#39;open&#39;);">Log in</a>
+        </form>        
+    </div>
+    <a class="close-reveal-modal">×</a>
+</div>
+<!-- thanks Modal window -->
+<!--<a href="#" data-reveal-id="thanks">click to open modal</a>-->
+<div id="profile_edit" class="reveal-modal small" style="background-image:url(&#39;&#39;); background-color:#FFF; color:#333;">
+	<h4 style="color:#333;">Edit your profile information</h4>
+    <div class="row">    		
+        	<form name="frm_profile_edit" id="frm_profile_edit" action="" method="POST">
+            	First Name:<input name="fname" id="fname" type="text" value="">
+                Last Name:<input name="lname" id="lname" type="text" value="">
+                Email:<input name="email" id="email" type="text" value="">                
+                Password:<input name="password" id="password" type="password" value="">
+                Screen Name:<input name="screenName" id="screenName" type="text" value="">
+                <input name="userId" id="userId" type="hidden" value="">
+            	                	<div style="margin:10px 0px 10px 0px;" id="profile_edit_FB_link"><img src="./hole_cutter_files/facebook_icon.jpg" style="margin-right:10px;"><a href="javascript://" onclick="FBLinkEdit();">Link Your Facebook Account</a></div>	
+                                
+            	<div id="profile_edit_message" class="important" style="margin:10px 0px 20px 0px; font-weight:bold;"></div>                   
+                <input name="facebookEmail_edit" id="facebookEmail_edit" type="hidden" value="">   
+                <input name="facebookId_edit" id="facebookId_edit" type="hidden" value="">   
+                <input type="button" name="submit" value=" Save " class="vrf-submit small button radius left" style="width:75px; margin-right:7px;" onclick="frm_profile_edit_submit();">
+                <input type="button" name="submit" value=" Cancel " class="vrf-submit small button radius left" style="width:75px; margin-right:7px;" onclick="$(&#39;#profile_edit&#39;).foundation(&#39;reveal&#39;, &#39;close&#39;);">
+            </form>        
+    </div><a class="close-reveal-modal">×</a>    
+</div> 
+<!-- thanks Modal window -->
+<!--<a href="#" data-reveal-id="thanks">click to open modal</a>-->
+<div id="login" class="reveal-modal small" style="background-image:url(&#39;&#39;); background-color:#FFF; color:#333;">	
+        	<h4 style="color:#333;">Share your idea for a Handi-App or rate ideas</h4>
+    	Ideas that get high ratings earn you Handibot swag!
+        <div class="row">
+        <br>
+        
+        <a href="javascript:void(0);" onclick="FBLogin();"><img src="./hole_cutter_files/facebook-login-button.png" border="0"></a>
+        <br><br>
+
+        <form name="frm_login" id="frm_login" action="" method="POST">            	
+            Email: <input name="email" id="email" type="text">
+            Password: <input name="password" id="password" type="password" value="">            
+            <div id="login_message" class="important" style="margin:10px 0px 20px 0px; font-weight:bold;"></div>                   
+            <input name="login_redirect" id="login_redirect" type="hidden" value=""> 
+            <input type="button" name="submit" value=" Login " class="vrf-submit small button radius left" style="width:100px; margin-right:7px;" onclick="frm_login_submit();"> or <a href="javascript://" onclick="$(&#39;#forgot_password&#39;).foundation(&#39;reveal&#39;, &#39;open&#39;);">Forgot Password</a>
+          <br>
+          <br>              
+        </form>        
+
+
+		
+
+    </div>
+    <div class="row">
+    	<a href="javascript://" onclick="$(&#39;#sign_up&#39;).foundation(&#39;reveal&#39;, &#39;open&#39;);">Sign Up</a>
+    </div><a class="close-reveal-modal">×</a>      
+</div>
+
+<!-- thanks Modal window -->
+<!--<a href="#" data-reveal-id="thanks">click to open modal</a>-->
+<div id="forgot_password" class="reveal-modal small" style="background-image:url(&#39;&#39;); background-color:#FFF; color:#333;">
+    Enter your email address and we'll email you your password.
+    <div class="row">
+    		<br>
+        	<form name="frm_forgot_password" id="frm_forgot_password" action="" method="POST">            	
+                Email: <input name="email" id="email" type="text">           
+            	<div id="forgot_password_message" class="important" style="margin:10px 0px 20px 0px; font-weight:bold;"></div>                   
+                <input type="button" name="submit" value=" Send my password " class="vrf-submit small button radius left" style="margin-right:7px;" onclick="frm_forgot_password_submit();"> or <a href="javascript://" onclick="$(&#39;#login&#39;).foundation(&#39;reveal&#39;, &#39;open&#39;);">Log in</a>
+            </form>        
+    </div><a class="close-reveal-modal">×</a>    
+</div>
+<!-- Footer -->
+<div id="footer" class="footer">
+    <div class="row">
+        <div class="large-12 columns">
+            <div class="row">
+                <div class="small-5 large-7 medium-7 columns"> <a href="http://107.170.167.212/apps/index.html"><img src="./hole_cutter_files/logo_small.png" alt="HandiBot logo"></a>
+                	<p class="hide-for-small">© 2014 | Handibot<sup>®</sup> is a trademark of ShopBot Tools, Inc. | <a href="javascript://" onclick="$(&#39;#toc&#39;).foundation(&#39;reveal&#39;, &#39;open&#39;);" style="color:#fff;">Terms of Service</a> </p>
+               
+                </div>
+                <div class="small-6 large-5 medium-5 columns">
+                    <ul class="inline-list right">
+                        <li class="hide-for-small"><a href="https://twitter.com/handibottool" target="_blank"><i class="fa fa-twitter-square fa-fw"></i></a></li>
+                        <li class="hide-for-small"><a href="https://www.facebook.com/HandibotTool" target="_blank"><i class="fa fa-facebook-square fa-fw"></i></a></li>
+                        <li class="hide-for-small"><a href="https://plus.google.com/112364092002164406768" target="_blank" rel="publisher"><i class="fa fa-google-plus-square fa-fw"></i></a></li>
+                        <li class="show-for-small"><a href="http://107.170.167.212/apps/contact_us.php" class="tiny button radius">Contact Us</a></li>
+                        <li class="hide-for-small"><a href="http://107.170.167.212/apps/contact_us.php" class="small button radius">Contact Us</a></li>
+                        <li class="show-for-small"><a href="http://107.170.167.212/apps/mail_list_signup.php" class="tiny button radius">Mailing list</a></li>
+                        <li class="hide-for-small"><a href="http://107.170.167.212/apps/mail_list_signup.php" class="small button radius">Join our mailing list</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="small-12 columns show-for-small">
+                    <p>© 2014 | Handibot<sup>®</sup> is a trademark of ShopBot Tools, Inc. </p>
+                  <!-- <p><a href="#" data-reveal-id="toc">Terms of Service</a></p> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div id="toc" class="reveal-modal xlarge" style="background-image:url(&#39;&#39;); background-color:#FFF; color:#333; padding:20px;">
+	<h3 align="center"><strong>TERMS OF SERVICE</strong></h3>
+	<p>This Handibot website is provided by ShopBot Tools, Inc. (hereinafter “ShopBot”) subject to the following Terms of Service (hereinafter “TOS”).&nbsp; The TOS constitute a binding agreement that conditions your use of this website and may be updated by us from time to time.&nbsp; You are granted a non-exclusive license to use the material on this website (hereafter “Content”) while connected to this website for your personal use.&nbsp;</p>
+  <p><strong>Privacy Policy</strong></p>
+	<ol style="margin-left:20px;">
+	  <li>We will not collect information from you other than personal information you supply us voluntarily. “Cookies” may be saved on your computer for the purpose of improving your experience on the site.</li>
+	  <li>With respect to transactions in the Handibot Store, we will use personal identification information that you supply us (such as name, billing address, shipping address, e-mail address, telephone number, credit card number, expiration date and PIN number) to provide the products and services that you have ordered or requested, to process and ship orders, to send order and shipping confirmations, and to provide customer service and technical support.&nbsp; This information may also be used to contact you about sales and special offers from us.&nbsp; You may opt out of continuing to receive such communications simply by clicking on an “unsubscribe” hyperlink contained in e-mail communications we send you.</li>
+	  <li>We may also use your personal identification information for internal or marketing purposes.&nbsp; We will not provide your personal information to other companies.</li>
+	  <li>We or our service providers may release personal identification information if we believe in good faith that the law or legal process requires it, we have received a valid administrative request from a law enforcement agency, or such release is necessary to protect anyone’s rights, property or safety.</li>
+  </ol>
+	<p><strong>Copyrights and Trademarks</strong></p>
+	<p>All Content included on this site, such as text, graphics, logos, icons, images, and audio clips is the property of ShopBot or its content suppliers and protected by United States and international copyright laws. Open-source and public domain materials or property part of the Handibot Open Innovation Project will be clearly marked as such. The compilation of all other content on this site is the exclusive property of ShopBot and protected by U.S. and international copyright laws.&nbsp; All trademarks used or referred to in this website are the property of their respective owners. All rights not expressly granted are herein reserved.</p>
+	<p><strong>Links</strong></p>
+	<p>While it may be possible to link or otherwise connect from this website to other websites, such connection is done at your own risk.&nbsp; By providing a link from this website to other websites, ShopBot does not endorse or in any way take responsibility for content that may be posted or events that may transpire at those other websites.</p>
+	<p><strong>Limitation of Liability</strong></p>
+	<p>You expressly understand and agree that ShopBot shall not be liable for any direct, indirect, incidental, special, consequential, exemplary or punitive losses or damages, including but not limited to losses or damages for any lost revenues or profits, based upon or related to use of any content on or accessed through this website or any website linked to, or any copying, displaying, or use thereof, even if ShopBot has been advised or made aware of the possibility of any such losses or damages.</p>
+	<p><strong>Disclaimer of Warranties</strong></p>
+	<p>You expressly agree that use of this website is at your sole risk.&nbsp; All materials and services on this website are provided “as is” without warranties of any kind.&nbsp; ShopBot makes no representations and disclaims all warranties, express or implied, including, but not limited to, warranties of merchantability and fitness for a particular purpose.</p>
+	<p>Some jurisdictions do not allow the exclusion of certain warranties or the limitation or exclusion of liability for incidental or consequential damages.&nbsp; Accordingly, some of the limitations CONTAINED IN THE PRECEDING PARAGRAPHs may not apply to you.</p>
+	<p><strong>Indemnification</strong></p>
+	<p>Through your use of this website, to the maximum extent allowed by law, you agree to indemnify and hold harmless ShopBot and its affiliates, officers, agents, and employees from and against any and all liabilities, expenses (including attorneys’ fees) and damages arising out of claims resulting from your use or misuse of this website, including, without limitation, any claims alleging facts that if true would constitute a breach by you of the TOS.</p>
+	<p><strong>Jurisdiction</strong></p>
+	<p>The laws of the State of North Carolina will govern the TOS and your use of this website.&nbsp; By using this website, you agree that the exclusive jurisdictions for litigating disputes arising out of or relating to your use of this website or the TOS shall be in the state or federal courts in Durham, North Carolina, and you agree to waive any objection based on&nbsp;<em>forum non conveniens</em>&nbsp;or any objection to venue of any such action.</p>
+	<p><strong>General</strong></p>
+	<p>The TOS represents the complete agreement between you and ShopBot with respect to this website and supersedes all prior or contemporaneous communications or agreements between you and ShopBot with respect to this website.&nbsp; The failure of ShopBot to act with respect to a breach of the TOS by you or others does not constitute a waiver and shall not limit ShopBot’s rights with respect to such breach or any subsequent breaches.&nbsp; In the event that any provision in the TOS is held to be invalid or unenforceable, that portion shall be construed in a manner consistent with applicable law to reflect, as nearly as possible, the original intentions of the parties, and the remaining portions of the TOS will continue in full force and effect.</p>
+	<p>Copyright © 2014 ShopBot Tools, Inc. All rights reserved.</p>
+	<p>&nbsp;</p>
+    <a class="close-reveal-modal">×</a>
+</div><!-- end Footer -->
+
+
+<script>
+  document.write('<script src=' +
+  ('__proto__' in {} ? '../js/vendor/zepto' : '../js/vendor/jquery') +
+  '.js><\/script>')
+  </script><script src="./hole_cutter_files/zepto.js"></script>
+
+<script src="./hole_cutter_files/CircleCutter.js"></script>
+<script src="./hole_cutter_files/foundation.js"></script>
+
+	<!--<script src="js/foundation/foundation.abide.js"></script>
+	
+	<script src="js/foundation/foundation.alerts.js"></script>-->
+	
+	<script src="./hole_cutter_files/foundation.clearing.js"></script>
+	
+	<!--<script src="js/foundation/foundation.cookie.js"></script>
+	
+	<script src="js/foundation/foundation.dropdown.js"></script> -->
+	
+	<script src="./hole_cutter_files/foundation.forms.js"></script>
+	
+	<!-- <script src="js/foundation/foundation.interchange.js"></script>
+	
+	<script src="js/foundation/foundation.joyride.js"></script>
+	
+	<script src="js/foundation/foundation.magellan.js"></script>
+	
+	<script src="js/foundation/foundation.orbit.js"></script>
+	
+	<script src="js/foundation/foundation.placeholder.js"></script>-->
+	
+	<script src="./hole_cutter_files/foundation.reveal.js"></script>
+	
+	<!--<script src="js/foundation/foundation.section.js"></script>-->
+	
+	<script src="./hole_cutter_files/foundation.tooltips.js"></script>
+	
+	<script src="./hole_cutter_files/foundation.topbar.js"></script>
+	
+    
+  
+  <script>
+    $(document).foundation();
+  </script>
+  
+
+
+<iframe src="./hole_cutter_files/userData.html" style="position: absolute; top: -100px; left: -100px; z-index: -10; border: none; visibility: hidden; width: 1px; height: 1px;"></iframe></body></html>

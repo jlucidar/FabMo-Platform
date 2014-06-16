@@ -1,7 +1,5 @@
-//v1.0.0
-//require JQUERY & JQUERY UI
-
-function MakerMo(ip,port) //ip and port of the tool
+//require JQUERY
+function FabMo(ip,port) //ip and port of the tool
 {
 	this.ip = ip || '127.0.0.1';
 	this.port = port || '8080';
@@ -47,7 +45,7 @@ function MakerMo(ip,port) //ip and port of the tool
 
 
 
-MakerMo.prototype.list_files = function(callback)
+FabMo.prototype.list_files = function(callback)
 {
 	$.ajax({
 		url: this.url.file,
@@ -61,7 +59,7 @@ MakerMo.prototype.list_files = function(callback)
 			 }
 	});
 }
-MakerMo.prototype.get_status = function(callback)
+FabMo.prototype.get_status = function(callback)
 {
 	$.ajax({
 		url: this.url.status,
@@ -76,7 +74,7 @@ MakerMo.prototype.get_status = function(callback)
 	});
 }
 
-MakerMo.prototype.get_config = function(callback)
+FabMo.prototype.get_config = function(callback)
 {
 	$.ajax({
 		url: this.url.config,
@@ -93,16 +91,16 @@ MakerMo.prototype.get_config = function(callback)
 
 
 
-MakerMo.prototype.download_by_id = function(id)
+FabMo.prototype.download_by_id = function(id)
 {
 	window.location =this.url.file+ "/" + id;
 }
-MakerMo.prototype.download = function(file)
+FabMo.prototype.download = function(file)
 {
 	this.download_by_id(file._id);
 }
 
-MakerMo.prototype.delete_by_id = function(id,callback)
+FabMo.prototype.delete_by_id = function(id,callback)
 {
 	$.ajax({
 		url: this.url.file + '/' + id,
@@ -117,13 +115,13 @@ MakerMo.prototype.delete_by_id = function(id,callback)
 			}
 	});
 }
-MakerMo.prototype.delete = function(file,callback)
+FabMo.prototype.delete = function(file,callback)
 {
 	this.delete_by_id(file._id,callback);
 }
 
 
-MakerMo.prototype.run_by_id = function(id,callback)
+FabMo.prototype.run_by_id = function(id,callback)
 {
 	var that=this;
 	$.ajax({
@@ -134,18 +132,17 @@ MakerMo.prototype.run_by_id = function(id,callback)
 			callback();
 			},
 		error: function(data) {
-			console.log(data);
 			var err = 'run failed'; 
 	    		callback();
 			}
 	});
 }
-MakerMo.prototype.run = function(file,callback)
+FabMo.prototype.run = function(file,callback)
 {
 	this.run(file._id,callback);
 }
 
-MakerMo.prototype.stop = function(){
+FabMo.prototype.stop = function(){
 	$.ajax({
 		url: this.url.stop,
 		type: "GET",
@@ -161,10 +158,10 @@ MakerMo.prototype.stop = function(){
 
 
 
-MakerMo.prototype.goto =  function(x,y,z)
+FabMo.prototype.goto =  function(x,y,z)
 {
 	$.ajax({
-		url: this.url.status,
+		url: this.url.goto,
 		type: "POST",
 		dataType : 'json', 
 		data : {'x' : x, 'y' :y, 'z':z},
@@ -177,7 +174,7 @@ MakerMo.prototype.goto =  function(x,y,z)
 	});
 }
 
-MakerMo.prototype.gcode = function(gcode_line,callback)
+FabMo.prototype.gcode = function(gcode_line,callback)
 {
 	$.ajax({
 		url: this.url.gcode,
@@ -197,7 +194,7 @@ MakerMo.prototype.gcode = function(gcode_line,callback)
 }
 
 
-MakerMo.prototype.start_move =  function(dir)
+FabMo.prototype.start_move =  function(dir)
 {
 	$.ajax({
 		url: this.url.move,
@@ -213,7 +210,7 @@ MakerMo.prototype.start_move =  function(dir)
 	});
 }
 
-MakerMo.prototype.stop_move =  function()
+FabMo.prototype.stop_move =  function()
 {
 	$.ajax({
 		url: this.url.move,
@@ -230,17 +227,70 @@ MakerMo.prototype.stop_move =  function()
 }
 
 
+// take a form data, look for a file field, and upload the file load in it
+FabMo.prototype.upload_file =  function(formdata,callback)
+{
+	if (formdata instanceof jQuery){ //if it's a form
+		var file = (formdata.find('input:file'))[0].files[0];
+		// Create a new FormData object.
+		var formData = new FormData();
+		formData.append('file', file, file.name);
+	}
+	else // else it's a formData
+	{
+		var formData = formdata;
+	}		
+	if (formData) {
+		$.ajax({
+			url: this.url.file,
+			type: "POST",
+			data: formData,
+			processData: false,
+			contentType: false,
+			DataType:'json',
+			statusCode: {
+				302: function(res) {
+					callback(JSON.parse(res.responseText)[0]); 
+				},
+				400: function(res) {
+					alert('file upload error : bad request');
+					callback(res); 
+				},
+				415: function(res) {
+					alert('file upload error : not allowed format');
+					callback(res); 
+				}
+			}
+		});
+	}
+}
 
-function MakerMoAutoConnect(callback){
+// non persistent mode : upload, run & delete.
+FabMo.prototype.run_local_file =  function(file,ext,callback)
+{
+	var blob = new Blob([file]);
+	var fD = new FormData();
+	fD.append('file', blob, 'temp.'+ ext);
+	var that = this;
+	that.upload_file(fD,function(file_obj){
+		that.run_by_id(file_obj._id,function(){
+			that.delete(file_obj,function(){
+				if (callback){
+					callback('file executed once');}
+			});
+		});
+	});
+}
+
+
+
+function FabMoAutoConnect(callback){
 	DetectToolsOnTheNetworks(function(err,list_tools){
-		console.log(list_tools);
 		if (err){ callback(err);return;} 
 		SelectATool(list_tools,function(err,tool){
-			console.log(tool);
 			if (err){ callback(err);return;}
 			ChooseBestWayToConnect(tool,function(ip_address){
-				console.log(ip_address);
-				callback(undefined,new MakerMo(ip_address));	
+				callback(undefined,new FabMo(ip_address));	
 			});
 		});
 	});
@@ -325,4 +375,3 @@ function SelectATool(list_tools,callback){
 	}
  
 }
-

@@ -32,7 +32,7 @@ This github repository contains sources and tools about the new FabMo APIs and t
  * FabMo SBC API - *still in developement* - provide a restful API to communicate with the G2 system, and do basic file management, streaming, conversion, state & config report and file execution - powered by Node.js
  * FabMo platform - *not develloped yet* - provide a tool configurator, an apps manager & downloader, a supervision tool and more to come - powered by Node.js
  * FabMo Link API - first Windows version released - powered by Node.js
- * [OPTIONAL] [FabMo Javascript Library](fabmo-1.0.4.js) provide a simple way to communicate with the system through your web app.
+ * [OPTIONAL] [FabMo Javascript Library](fabmo-1.0.5.js) provide a simple way to communicate with the system through your web app.
 {TO COMPLETE}
 
 

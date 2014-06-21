@@ -9,6 +9,7 @@ function FabMo(ip,port) //ip and port of the tool
 	this.url.file=this.url.base+"/file";
 	this.url.status=this.url.base+'/status';
 	this.url.config=this.url.base+'/config';
+	this.url.info=this.url.base+'/info';
 	this.url.run=this.url.base+'/run';
 	this.url.pause=this.url.base + '/pause';
 	this.url.quit=this.url.base + '/quit' ;
@@ -122,7 +123,7 @@ FabMo.prototype.get_config = function(callback)
 		type: "GET",
 		dataType : 'json', 
 		success: function( data ) {
-			callback(undefined,data.config);
+			callback(undefined,data);
 			},
 		error: function(data,err) {
 				var error =that.default_error.no_device;
@@ -132,6 +133,25 @@ FabMo.prototype.get_config = function(callback)
 	});
 }
 
+FabMo.prototype.get_info = function(callback)
+{
+	if (!callback)
+		throw "this function need a callback to work !";
+	var that=this;
+	$.ajax({
+		url: this.url.info,
+		type: "GET",
+		dataType : 'json', 
+		success: function( data ) {
+			callback(undefined,data);
+			},
+		error: function(data,err) {
+				var error =that.default_error.no_device;
+				error.sys_err = err;
+			 	callback(error);
+			}
+	});
+}
 
 
 FabMo.prototype.download_by_id = function(id)

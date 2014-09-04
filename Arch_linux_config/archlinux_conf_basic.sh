@@ -2,27 +2,19 @@
 
 echo "/*************** script optimised for ArchLinuxARM-2014.04-rpi **************/"
 
-echo "\tconnect the raspberry pi via the ethernet cable,\n
+echo "\tconnect the beaglebone to the internet via the ethernet cable,\n
 \tlaunch the script\n
 \tand go drink a coffee !\n\n
 press a key to continue ..."
 read pause
 
-## seems to do it by itself on the first launch
-#connection over the ethernet network
-#dhcpd
-#wait for getting the ip
-#sleep 5
-# print the network configuration
-#ifconfig eth0
+
+#time
+pacman -S ntpd --noconfirm
 
 #install the required packages for wifi support
 pacman -S iw --noconfirm
 pacman -S wireless_tools --noconfirm
-pacman -S wicd --noconfirm
-
-#install the automatic port forwarding
-pacman -S miniupnpc --noconfirm
 
 # install gcc
 pacman -S gcc --noconfirm
@@ -30,6 +22,9 @@ pacman -S gcc --noconfirm
 # install the dhcp server
 pacman -S dhcp --noconfirm
 pacman -S udhcpd --noconfirm
+
+# install node.js
+pacman -S nodejs --noconfirm
 
 # update the system
 pacman -Syu --noconfirm
@@ -47,21 +42,84 @@ pacman -Syu --noconfirm
 systemctl enable /lib/systemd/system/wpa_supplicant.service
 systemctl enable netctl-auto@wlp2s0.service
 
+
+
+
+################ ETHERNET ON USB CONFIG #########################
+
 # allow ethernet over usb at the startup 
 echo "g_ether" >  /etc/modules-load.d/g_ether.conf
+
+
 # mount the usb0 interface if it is available, and configure it with the ip 192.168.10.1, netmask 255.255.255.252
-echo -e "Description='A basic dhcp ethernet over usb connection'\nInterface=usb0\nConnection=ethernet\nIP=static\nAddress=('192.168.10.1/29')" > /etc/netctl/usb0
+cat >> /etc/netctl/usb0 <<EOF
+Description='A basic dhcp ethernet over usb connection'
+Interface=usb0
+Connection=ethernet
+IP=static
+Address=('192.168.10.1/29')
+EOF
+
 #enable at startup
 netctl enable usb0
 
-#dhcp service on usb0
 
-# dhcpd.conf\n
-# usb0 dhcp service\n
-echo -e "subnet 192.168.10.0 netmask 255.255.255.248 {\n  range 192.168.10.2 192.168.10.6;\n  default-lease-time 600;\n  max-lease-time 7200;\n}\n" > /etc/dhcpd.conf
+# dhcpd.conf
+cat >> /etc/dhcpd.conf <<EOF
+subnet 192.168.10.0 netmask 255.255.255.248 {
+  range 192.168.10.2 192.168.10.6;
+  default-lease-time 600;
+  max-lease-time 7200;
+}
+EOF
 
-echo -e "[Unit]\nDescription=IPv4 DHCP server on usb0\nWants=network.target\nAfter=network.target\n\n[Service]\nType=forking\nPIDFile=/run/dhcpd4.pid\nExecStart=/usr/bin/dhcpd -4 -q -pf /run/dhcpd4.pid usb0\nKillSignal=SIGINT\n\n[Install]\nWantedBy=multi-user.target\n" > /etc/systemd/system/dhcpd_usb0.service
+# usb0 dhcp service
+cat >>  /etc/systemd/system/dhcpd_usb0.service <<EOF
+[Unit]
+Description=IPv4 DHCP server on usb0
+Wants=network.target
+After=network.target
+
+[Service]
+Type=forking
+PIDFile=/run/dhcpd4.pid
+ExecStart=/usr/bin/dhcpd -4 -q -pf /run/dhcpd4.pid usb0
+KillSignal=SIGINT
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+#enable dhcp on usb
 systemctl enable dhcpd_usb0
+
+
+# usb hotplug
+cat > /etc/udev/rules.d/73-beaglebone.rules <<EOF
+ACTION=="add", SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_interface", \
+        ATTRS{idVendor}=="0403", ATTRS{idProduct}=="a6d0", \
+        DRIVER=="", RUN+="/sbin/modprobe -b ftdi_sio"
+
+ACTION=="add", SUBSYSTEM=="drivers", \
+        ENV{DEVPATH}=="/bus/usb-serial/drivers/ftdi_sio", \
+        ATTR{new_id}="0403 a6d0"
+
+ACTION=="add", KERNEL=="ttyUSB*", \
+	ATTRS{interface}=="BeagleBone", \
+        ATTRS{bInterfaceNumber}=="00", \
+	SYMLINK+="beaglebone-jtag"
+
+ACTION=="add", KERNEL=="ttyUSB*", \
+	ATTRS{interface}=="BeagleBone", \
+        ATTRS{bInterfaceNumber}=="01", \
+	SYMLINK+="beaglebone-serial"
+EOF
+
+# reload udev rules
+udevadm control --reload-rules
+##################################################################
+
+
 
 ############# TO-DO #################
 # ADD THE dhcp server configuration #
